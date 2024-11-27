@@ -20,6 +20,6 @@ int print_char(va_list args)
 char C;
 
 C = va_arg(args, int);
-return write(1, &C, 1);
+return (write(1, &C, 1));
 
 }
