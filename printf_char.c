@@ -10,11 +10,9 @@
  */
 
 
-#include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
-#include "main.h"
+
 
 int print_char(va_list args)
 {
@@ -22,7 +20,6 @@ int print_char(va_list args)
 char C;
 
 C = va_arg(args, int);
-write(1, &C, 1);
-return (1);
+return write(1, &C, 1);
 
 }

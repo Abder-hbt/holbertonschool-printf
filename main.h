@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * _printf - Custom printf function that prints formatted output.

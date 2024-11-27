@@ -9,11 +9,9 @@
  * Return: The number of characters printed.
  */
 
-#include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
-#include "main.h"
+
 
 int print_string(va_list args)
 
@@ -24,10 +22,6 @@ int index = 0;
 int count = 0;
 S = va_arg(args, char *);
 
-if (S == NULL)
-{
-return (0);
-}
 
 while (S[index] != '\0')
 {

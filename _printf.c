@@ -5,10 +5,8 @@
  * Return: Number of characters printed.
  */
 
-#include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
 
 int _printf(const char *format, ...)
@@ -26,7 +24,7 @@ if (format[index] != '%')
 write(1, &format[index], 1);
 count++;
 }
-else
+else if (format[index] == '%')
 {
 if (format[index + 1] == 'c')
 {

@@ -7,17 +7,13 @@
  * Return: 1 (the number of characters printed).
  */
 
-#include <stdlib.h>
+
 #include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include "main.h"
 
 int print_percent(void)
 
 {
 
-write(1, "%", 1);
-return (1);
+return write(1, "%", 1);
 
 }
