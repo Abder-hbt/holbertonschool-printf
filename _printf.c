@@ -17,6 +17,16 @@ int count = 0;
 
 va_start(args, format);
 
+if (format == NULL)
+{
+return (-1);
+}
+
+if (format[0] == '\0')
+{
+return (0);
+}
+
 for (index = 0; format[index] != '\0'; index++)
 {
 if (format[index] != '%')
@@ -24,9 +34,15 @@ if (format[index] != '%')
 write(1, &format[index], 1);
 count++;
 }
-else if (format[index] == '%')
+else
 {
-if (format[index + 1] == 'c')
+if (format[index + 1] == '%')
+{
+write(1, "%", 1);
+count++;
+index++;
+}
+else if (format[index + 1] == 'c')
 {
 print_char(args);
 index++;
@@ -36,9 +52,15 @@ else if (format[index + 1] == 's')
 print_string(args);
 index++;
 }
+else if (format[index + 1] == 'd' || format[index + 1] == 'i')
+{
+print_number(va_arg(args, int));
+index++;
+}
 else
 {
-print_percent();
+write(1, &format[index], 1);
+count++;
 }
 }
 }

@@ -38,4 +38,6 @@ int print_string(va_list args);
  */
 int print_percent(void);
 
+void print_number(int number);
+
 #endif /* MAIN_H */
