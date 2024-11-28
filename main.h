@@ -7,10 +7,10 @@
 /**
  * _printf - Custom printf function that prints formatted output.
  * @format: The format string containing the text to be printed
- *          and format specifiers.
- * 
+ * and format specifiers.
+ *
  * Return: The number of characters printed (excluding the null byte
- *         used to end output). Returns -1 if an error occurs.
+ * used to end output). Returns -1 if an error occurs.
  */
 int _printf(const char *format, ...);
 
@@ -39,7 +39,7 @@ int print_percent(void);
 
 /**
  * print_number - Handles the integer and decimal format specifiers.
- * @args: The variable arguments list containing the number.
+ * @number: The variable arguments list containing the number.
  *
  * Return: The number of characters printed.
  */

@@ -13,8 +13,8 @@
  */
 int print_char(va_list args)
 {
-    char C;
+char C;
 
-    C = (char) va_arg(args, int);
-    return (write(1, &C, 1));
+C = (char) va_arg(args, int);
+return (write(1, &C, 1));
 }

@@ -11,25 +11,26 @@
  *
  * Return: The number of characters printed.
  */
+
 int print_string(va_list args)
 {
-    char *S;
-    int index = 0;
-    int count = 0;
+char *S;
+int index = 0;
+int count = 0;
 
-    S = va_arg(args, char *);
+S = va_arg(args, char *);
 
-    if (S == NULL)
-    {
-        S = "(null)";
-    }
+if (S == NULL)
+{
+S = "(null)";
+}
 
-    while (S[index] != '\0')
-    {
-        write(1, &S[index], 1);
-        index++;
-        count++;
-    }
+while (S[index] != '\0')
+{
+write(1, &S[index], 1);
+index++;
+count++;
+}
 
-    return (count);
+return (count);
 }
