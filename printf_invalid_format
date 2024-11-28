@@ -1,3 +1,4 @@
+#include <unistd.h>
 /**
  * handle_invalid_format - Handles invalid format specifiers.
  * @invalid_char: The invalid character to be printed.
@@ -8,11 +9,3 @@
  * Return: 2 (the number of characters printed).
  */
 
-#include <unistd.h>
-
-int handle_invalid_format(char invalid_char)
-{
-write(1, "%", 1);
-write(1, &invalid_char, 1);
-return (2);
-}

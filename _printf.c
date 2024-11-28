@@ -2,7 +2,7 @@
  * _printf - Custom printf function that handles %c, %s, and %.
  * @format: Format string to print.
  *
- * Return: Number of characters printed.
+ * Return: Number of characters printed, or -1 if an error occurs.
  */
 
 #include <unistd.h>
@@ -11,66 +11,37 @@
 
 int _printf(const char *format, ...)
 {
-int index;
-va_list args;
-int count = 0;
+    va_list args;
+    int i, count = 0;
 
-va_start(args, format);
+    if (!format)
+        return (-1);
 
-if (format == NULL)
-{
-    return (-1);
-}
+    va_start(args, format);
 
-if (format[0] == '\0')
-{
-return (0);
-}
+    for (i = 0; format[i] != '\0'; i++)
+    {
+        if (format[i] == '%')
+        {
+            i++;
+            if (format[i] == 'c')
+                count += print_char(args);
+            else if (format[i] == 's')
+                count += print_string(args);
+            else if (format[i] == 'd' || format[i] == 'i')
+                count += print_number(va_arg(args, int));
+            else if (format[i] == '%')
+                count += print_percent();
+            else
+                count += handle_invalid_format(format[i]);
+        }
+        else
+        {
+            write(1, &format[i], 1);
+            count++;
+        }
+    }
 
-for (index = 0; format[index] != '\0'; index++)
-{
-if (format[index] != '%')
-{
-write(1, &format[index], 1);
-count++;
-}
-else
-{
-if (format[index + 1] == '%')
-{
-    write(1, "%", 1);
-    count++;
-    index++;
-}
-else if (format[index + 1] == 'c')
-{
-print_char(args);
-index++;
-}
-else if (format[index + 1] == 's')
-{
-print_string(args);
-index++;
-}
-else if(format[index + 1] == 'd' || format[index + 1] == 'i')
-{
-print_number(va_arg(args, int));
-index++;
-}
-
-else if (!(format[index + 1] == 'c' || format[index + 1] == 's' || format[index + 1] == 'd' || format[index + 1] == 'i'))
-{
-write(1, &format[index], 1);
-count++;
-}
-
-else
-{
-print_percent();
-}
-}
-}
-
-va_end(args);
-return (count);
+    va_end(args);
+    return (count);
 }

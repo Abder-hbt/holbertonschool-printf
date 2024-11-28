@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 /**
  * print_percent - Prints a percent symbol to standard output.
  *
@@ -6,14 +8,8 @@
  *
  * Return: 1 (the number of characters printed).
  */
-
-
-#include <unistd.h>
-
 int print_percent(void)
-
 {
-
-write(1, "%", 1);
-return (1);
+    write(1, "%", 1);
+    return (1);
 }

@@ -1,3 +1,6 @@
+#include <unistd.h>
+#include <stdarg.h>
+
 /**
  * print_char - Prints a character to standard output.
  * @args: A va_list containing the argument to be printed.
@@ -8,18 +11,10 @@
  *
  * Return: 1 (the number of characters printed).
  */
-
-
-#include <unistd.h>
-#include <stdarg.h>
-
-
 int print_char(va_list args)
 {
+    char C;
 
-char C;
-
-C = va_arg(args, int);
-return (write(1, &C, 1));
-
+    C = (char) va_arg(args, int);
+    return (write(1, &C, 1));
 }
