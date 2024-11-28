@@ -22,6 +22,10 @@ int index = 0;
 int count = 0;
 S = va_arg(args, char *);
 
+if (S == NULL)
+{
+S = "(null)";
+}
 
 while (S[index] != '\0')
 {
